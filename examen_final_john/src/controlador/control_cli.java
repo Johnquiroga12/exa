@@ -35,15 +35,16 @@ public class control_cli {
     public control_cli(modelo_cliente model, vista_cliente vis) {
         this.model = model;
         this.vis = vis;
+        vis.setVisible(true);
     }
 
     public void controlpersona() {
-        vis.getBtnexaminar().addActionListener(j -> examifoto());
+        vis.getBtnexaminar1().addActionListener(j -> examifoto());
         vis.getBtncrear().addActionListener(h -> abrirdialo(1));
         vis.getBtneditar().addActionListener(h -> abrirdialo(2));
         vis.getBtneliminar().addActionListener(j -> eli());
-        vis.getBtnguardar().addActionListener(h -> creareditar());
-                vis.getBtnactual().addActionListener(j ->cargar());
+        vis.getBtnguardar().addActionListener(h -> guardar());
+        vis.getBtnactual().addActionListener(j ->cargar());
     }
 
     private void examifoto() {
@@ -79,11 +80,9 @@ public class control_cli {
         DefaultTableModel tabla;
         tabla = (DefaultTableModel) vis.getjTbcliente().getModel();
         tabla.setNumRows(0);
-
         List<clientes> lis = model.listarclientes();
         Holder<Integer> i = new Holder<>(0);
         lis.stream().forEach(q -> {
-
             tabla.addRow(new Object[9]);//cantidad de columna
            vis.getjTbcliente().setValueAt(q.getCedula(), i.value, 0);
             vis.getjTbcliente().setValueAt(q.getNombre(), i.value, 1);
@@ -94,7 +93,6 @@ public class control_cli {
             vis.getjTbcliente().setValueAt(q.getCorreo_elec(), i.value, 6);
             Image foto = q.getFoto();
             if (foto != null) {
-
                 Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                 ImageIcon icon = new ImageIcon(nimg);
                 DefaultTableCellRenderer render = new DefaultTableCellRenderer();
@@ -135,7 +133,6 @@ public class control_cli {
                 String nombre = vis.getTxtnom().getText();
                 String apellido = vis.getTxtape().getText();
                 String direc= vis.getTxtdireccion().getText();
-                
                String telefono = vis.getTxttelefono().getText();
                 String fechanaci = ((JTextField) vis.getFecha().getDateEditor().getUiComponent()).getText();
                 Date fecha = java.sql.Date.valueOf(fechanaci);
@@ -147,8 +144,7 @@ public class control_cli {
                  per.setDireccion(direc);
                 per.setFechaNacimiento((java.sql.Date) fecha);
                 per.setTelefono(telefono);
-                               per.setCorreo_elec(correo);
-
+                per.setCorreo_elec(correo);
                 try {
                     //Foto
                     FileInputStream img = new FileInputStream(jfch.getSelectedFile());
@@ -159,7 +155,7 @@ public class control_cli {
                     Logger.getLogger(control_cli.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                if (per.crearPersonaByte()) {
+                if (per.crear()) {
                     vis.getJdlcliente().setVisible(false);
                     JOptionPane.showMessageDialog(vis, "Persona Creada Satisfactoriamente");
                 } else {
@@ -183,7 +179,7 @@ public class control_cli {
                 t.setTelefono(tlefono);
                 t.setCorreo_elec(correo);
                 if (jfch == null) {
-                if (t.editarClienteBDA()) {
+                if (t.editar()) {
                     JOptionPane.showMessageDialog(vis, "SE MODIIFICO LA PERSONA");
                 } else {
                     JOptionPane.showMessageDialog(vis, "Se a producido un error al modificar el producto.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -203,7 +199,10 @@ public class control_cli {
             }
         }
     }
-
+public void guardar()
+{
+    creareditar();
+}
     private void editar() {
         List<clientes> per = model.listarclientes();
         int xx = vis.getjTbcliente().getSelectedRow();

@@ -31,7 +31,7 @@ public class modelo_cliente extends clientes{
     public java.util.List<clientes> listarclientes() {
         java.util.List<clientes> lista = new ArrayList<clientes>();
         try {
-            String sql = "select * from persona";
+            String sql = "select * from cliente";
             ResultSet rs = cpg.colsulta(sql);
             byte[] bytes;
             while (rs.next()) {
@@ -39,7 +39,7 @@ public class modelo_cliente extends clientes{
                 p.setCedula(rs.getString("cedula"));
                 p.setNombre(rs.getString("nombre"));
                 p.setApellido(rs.getString("apellido"));
-                p.setFechaNacimiento(rs.getDate("Direccion"));
+                p.setFechaNacimiento(rs.getDate("direccion"));
                 p.setTelefono(rs.getString("telefono"));
                 p.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
                 p.setCorreo_elec(rs.getString("correo_elec"));
@@ -73,9 +73,9 @@ public class modelo_cliente extends clientes{
         param.setSourceSubsampling(1, 1, 0, 0);
         return reader.read(0, param);
     }
-  public boolean crearPersonaByte() {
+  public boolean crear() {
         try {
-            String sql = "INSERT INTO Cliente (cedula, nombre, apellido, Direccion, telefono, fecha_nacimiento,correo_elec, foto)";
+            String sql = "INSERT INTO cliente (cedula, nombre, apellido, direccion, telefono, fecha_nacimiento,correo_elec, foto)";
             sql += "VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setString(1, getCedula());
@@ -94,10 +94,10 @@ public class modelo_cliente extends clientes{
         }
     } 
   
-public boolean editarClienteBDA() {
+public boolean editar() {
         try {
-            String sql = "UPDATE public.Cliente\n"
-                    + "	SET nombre=?, apellido=?, Direccion=?, telefono=?, fecha_nacimiento=?, correo_elec=?, foto=?\n"
+            String sql = "UPDATE public.cliente\n"
+                    + "	SET nombre=?, apellido=?, direccion=?, telefono=?, fecha_nacimiento=?, correo_elec=?, foto=?\n"
                     + "	WHERE cedula='"+getCedula()+"';";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setString(0, getCedula());
@@ -118,7 +118,7 @@ public boolean editarClienteBDA() {
     }
          
      public boolean eliminarcli(String idcliente){
-        String sql = "UPDATE Cliente SET WHERE cedula = '" + idcliente + "';";
+        String sql = "UPDATE cliente SET WHERE cedula = '" + idcliente + "';";
         System.out.println("" + sql);
         return cpg.accion(sql);
     } 

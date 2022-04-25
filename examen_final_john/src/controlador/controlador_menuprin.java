@@ -13,7 +13,7 @@ public class controlador_menuprin {
         vistamenu.setVisible(true);
     }
     public void insercontrol() {
-        vistamenu.getMncrearperso().addActionListener(j -> crudperso()); 
+        vistamenu.getBtncreaclimenu().addActionListener(j -> crudperso()); 
     }
 
     private void crudperso() {

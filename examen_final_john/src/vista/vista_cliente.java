@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
 import com.toedter.calendar.JDateChooser;
@@ -12,15 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- *
- * @author LENOVO
- */
 public class vista_cliente extends javax.swing.JInternalFrame {
     public vista_cliente() {
-        initComponents();
-        
-        
+        initComponents();        
     }
 
     public JDateChooser getFecha() {

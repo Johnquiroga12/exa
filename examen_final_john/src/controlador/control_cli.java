@@ -21,11 +21,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 import javax.xml.ws.Holder;
 import modelo.clientes;
 import modelo.modelo_cliente;
-import sun.swing.table.DefaultTableCellHeaderRenderer;
 import vista.vista_cliente;
 
 public class control_cli {

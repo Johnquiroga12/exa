@@ -99,7 +99,7 @@ public class control_cli {
 
                 Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                 ImageIcon icon = new ImageIcon(nimg);
-                DefaultTableCellRenderer render = new DefaultTableCellHeaderRenderer();
+                DefaultTableCellRenderer render = new DefaultTableCellRenderer();
                 render.setIcon(icon);
                 vis.getjTbcliente().setValueAt(new JLabel(icon), i.value, 7);
 

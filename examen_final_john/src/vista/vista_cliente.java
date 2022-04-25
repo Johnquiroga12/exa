@@ -290,11 +290,6 @@ public class vista_cliente extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 260, 70));
 
         btnactual.setText("actualizar");
-        btnactual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnactualActionPerformed(evt);
-            }
-        });
         getContentPane().add(btnactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, -1, -1));
 
         pack();
@@ -307,10 +302,6 @@ public class vista_cliente extends javax.swing.JInternalFrame {
     private void txttelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttelefonoActionPerformed
-
-    private void btnactualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnactualActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnactual;
